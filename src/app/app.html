@@ -4,8 +4,8 @@
   <div class="products-list">
     <div
       class="product-card"
-      *ngFor="let product of products; let i = index"
-      [ngClass]="getStatusClass(product)">
+      *ngFor="let product of products()"
+      [ngClass]="getStatusClass(product.quantity)">
 
       <h3>{{ product.name }}</h3>
       <p>Ціна: {{ product.price }} грн</p>
@@ -14,12 +14,12 @@
       <p *ngIf="product.quantity > 0" class="status available">Є в наявності</p>
       <p *ngIf="product.quantity === 0" class="status unavailable">Немає в наявності</p>
 
-      <button (click)="removeProduct(i)" class="delete-btn">Видалити</button>
+      <button (click)="removeProduct(product.id)" class="delete-btn">Видалити</button>
     </div>
   </div>
 
   <div class="counter">
-    Всього товарів: {{ products.length }}
+    Всього товарів: {{ products().length }}
   </div>
 
   <div class="add-form">
