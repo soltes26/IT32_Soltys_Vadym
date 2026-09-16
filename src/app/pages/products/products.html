@@ -1,0 +1,9 @@
+<div class="page">
+  <h1>Список товарів</h1>
+
+  <div class="product-card" *ngFor="let product of products">
+    <h3>{{ product.name }}</h3>
+    <p>Ціна: {{ product.price }} грн</p>
+    <a [routerLink]="['/product', product.id]">Переглянути товар</a>
+  </div>
+</div>

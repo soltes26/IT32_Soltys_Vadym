@@ -1,0 +1,11 @@
+<div class="page">
+  <div *ngIf="product">
+    <h1>{{ product.name }}</h1>
+    <p>Ціна: {{ product.price }} грн</p>
+    <p>Кількість: {{ product.quantity }}</p>
+  </div>
+
+  <div *ngIf="!product">
+    <h1>Товар не знайдено</h1>
+  </div>
+</div>
