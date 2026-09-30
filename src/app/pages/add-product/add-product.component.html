@@ -1,0 +1,83 @@
+<h2>Додати товар</h2>
+
+<form #itemForm="ngForm" (ngSubmit)="addItem(itemForm)" novalidate>
+
+  <!-- Назва -->
+  <div class="field">
+    <label for="name">Назва</label>
+    <input
+      id="name"
+      name="name"
+      [(ngModel)]="model.name"
+      #nameRef="ngModel"
+      required
+      minlength="3"
+      maxlength="50"
+    />
+    @if (submitted && nameRef.invalid) {
+      <div class="error">
+        @if (nameRef.errors?.['required']) {
+          <small>Поле обов'язкове</small>
+        }
+        @if (nameRef.errors?.['minlength']) {
+          <small>Назва має містити мінімум 3 символи</small>
+        }
+        @if (nameRef.errors?.['maxlength']) {
+          <small>Назва має містити максимум 50 символів</small>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Виробник -->
+  <div class="field">
+    <label for="manufacturer">Виробник</label>
+    <input
+      id="manufacturer"
+      name="manufacturer"
+      [(ngModel)]="model.manufacturer"
+      #manufacturerRef="ngModel"
+      required
+      minlength="2"
+      maxlength="40"
+    />
+    @if (submitted && manufacturerRef.invalid) {
+      <div class="error">
+        @if (manufacturerRef.errors?.['required']) {
+          <small>Поле обов'язкове</small>
+        }
+        @if (manufacturerRef.errors?.['minlength']) {
+          <small>Виробник має містити мінімум 2 символи</small>
+        }
+        @if (manufacturerRef.errors?.['maxlength']) {
+          <small>Виробник має містити максимум 40 символів</small>
+        }
+      </div>
+    }
+  </div>
+
+  <!-- Опис -->
+  <div class="field">
+    <label for="description">Опис</label>
+    <textarea
+      id="description"
+      name="description"
+      [(ngModel)]="model.description"
+      #descriptionRef="ngModel"
+      required
+      minlength="10"
+    ></textarea>
+    @if (submitted && descriptionRef.invalid) {
+      <div class="error">
+        @if (descriptionRef.errors?.['required']) {
+          <small>Поле обов'язкове</small>
+        }
+        @if (descriptionRef.errors?.['minlength']) {
+          <small>Опис має містити мінімум 10 символів</small>
+        }
+      </div>
+    }
+  </div>
+
+  <button type="submit">Додати</button>
+</form>
